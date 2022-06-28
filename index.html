@@ -8,9 +8,10 @@
         <script>
             function computerPlay() { //returns random RPS
                 let rps = getRandomInt(1,4);
+                //console.log(rps);
                 if (rps === 1)
                 {
-                    return 'Scissor';
+                    return 'Scissors';
                 }
                 else if (rps === 2)
                 {
@@ -25,6 +26,56 @@
                 max = Math.floor(max);
                 return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
             }
+            function nonCaseSens(str) {
+                let capitalized = str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+                return capitalized;
+            } 
+            function oneRound(player, computer) {
+                if (player === computer)
+                {
+                    return "Tie!";
+                }
+                else if (player === 'Rock')
+                {
+                    if (computer === 'Paper')
+                    {
+                        return "You lose! Paper beats Rock";
+                    }
+                    else { //computer picks scissor
+                        return "You win! Rock beats Scissor"
+                    }
+                }
+                else if (player === 'Paper')
+                {
+                    if (computer === 'Rock')
+                    {
+                        return "You win! Paper beats Rock";
+                    }
+                    else { //computer picks scissor
+                        return "You lose! Scissor beats Paper"
+                    }
+                }
+                else if (player === 'Scissor') { 
+                    if (computer === 'Rock')
+                    {
+                        return "You lose! Rock beats Scissor";
+                    }
+                    else { //computer picks paper
+                        return "You win! Scissor beats Paper"
+                    }
+                }
+                else {
+                    return "Error! Pick Rock, Paper, or Scissors"
+                }
+            }
+            function game() {
+                for (let i = 0; i < 5; i++)
+                {
+                    let playerSelection = prompt("Rock, paper, or scissors?");
+                    console.log(i + oneRound(nonCaseSens(playerSelection),computerPlay()));
+                }
+            }
+            game();
         </script>
     </body>
 </html>
