@@ -6,7 +6,25 @@
     </head>
     <body>
         <script>
-            
+            function computerPlay() { //returns random RPS
+                let rps = getRandomInt(1,4);
+                if (rps === 1)
+                {
+                    return 'Scissor';
+                }
+                else if (rps === 2)
+                {
+                    return 'Paper';
+                }
+                else {
+                    return 'Rock';
+                }
+            }
+            function getRandomInt(min, max) { //returns a random value between parameters
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+            }
         </script>
     </body>
 </html>
