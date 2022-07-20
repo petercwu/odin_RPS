@@ -21,12 +21,12 @@
                 result.textContent = (oneRound(nonCaseSens(btn.id),computerPlay()));
                 document.body.appendChild(result);
                 gamesPlayed++;
-                if (computerWins == 5) { // stops the game when there is a winner
+                if (computerWins == 5) { // stops the game when computer wins
                     const finalResult = document.createElement("p");
                     finalResult.textContent = ("Computer Wins!")
                     document.body.appendChild(finalResult);
                     playing = false;
-                } else if (playerWins == 5) {
+                } else if (playerWins == 5) { //stops the game when the player wins
                     const finalResult = document.createElement("p");
                     finalResult.textContent = ("Player Wins!")
                     document.body.appendChild(finalResult);
@@ -102,8 +102,6 @@
                     return "Error! Pick Rock, Paper, or Scissors"
                 }
             }
-                //let playerSelection = prompt("Rock, paper, or scissors?");
-                //console.log(oneRound(nonCaseSens(playerSelection),computerPlay()));
         </script>
     </body>
 </html>
