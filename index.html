@@ -10,13 +10,22 @@
         <button id="Scissor"> Scissor</button>
         <div id="result"> Result </div>
         <script>
+            let playing = true;
+            let gamesPlayed = 0;
             const btns = document.querySelectorAll("button");
             btns.forEach(btn => btn.addEventListener("click", () => {
+            if (playing == true) { //only plays RPS and shows the result if "playing"
                 document.getElementById("result").textContent = (oneRound(nonCaseSens(btn.id),computerPlay()));
+                gamesPlayed++;
+            }
+            if (gamesPlayed == 5) { // stops the game at five rounds
+                playing = false;
+
+            }
             }));
+
             function computerPlay() { //returns random RPS
                 let rps = getRandomInt(1,4);
-                //console.log(rps);
                 if (rps === 1)
                 {
                     return 'Scissors';
