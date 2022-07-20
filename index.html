@@ -8,19 +8,30 @@
         <button id="Rock"> Rock</button>
         <button id="Paper"> Paper</button>
         <button id="Scissor"> Scissor</button>
-        <div id="result"> Result </div>
+        <div id="results"> Result </div>
         <script>
             let playing = true;
             let gamesPlayed = 0;
+            let computerWins = 0;
+            let playerWins = 0;
             const btns = document.querySelectorAll("button");
             btns.forEach(btn => btn.addEventListener("click", () => {
             if (playing == true) { //only plays RPS and shows the result if "playing"
-                document.getElementById("result").textContent = (oneRound(nonCaseSens(btn.id),computerPlay()));
+                const result = document.createElement("p");
+                result.textContent = (oneRound(nonCaseSens(btn.id),computerPlay()));
+                document.body.appendChild(result);
                 gamesPlayed++;
-            }
-            if (gamesPlayed == 5) { // stops the game at five rounds
-                playing = false;
-
+                if (computerWins == 5) { // stops the game when there is a winner
+                    const finalResult = document.createElement("p");
+                    finalResult.textContent = ("Computer Wins!")
+                    document.body.appendChild(finalResult);
+                    playing = false;
+                } else if (playerWins == 5) {
+                    const finalResult = document.createElement("p");
+                    finalResult.textContent = ("Player Wins!")
+                    document.body.appendChild(finalResult);
+                    playing = false;
+                }
             }
             }));
 
@@ -56,9 +67,11 @@
                 {
                     if (computer === 'Paper')
                     {
+                        computerWins++;
                         return "You lose! Paper beats Rock";
                     }
                     else { //computer picks scissor
+                        playerWins++;
                         return "You win! Rock beats Scissor"
                     }
                 }
@@ -66,18 +79,22 @@
                 {
                     if (computer === 'Rock')
                     {
+                        playerWins++;
                         return "You win! Paper beats Rock";
                     }
                     else { //computer picks scissor
+                        computerWins++;
                         return "You lose! Scissor beats Paper"
                     }
                 }
                 else if (player === 'Scissor') { 
                     if (computer === 'Rock')
                     {
+                        computerWins++;
                         return "You lose! Rock beats Scissor";
                     }
                     else { //computer picks paper
+                        playerWins++;
                         return "You win! Scissor beats Paper"
                     }
                 }
