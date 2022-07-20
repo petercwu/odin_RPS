@@ -5,7 +5,15 @@
         <title>Odin_RPS</title>
     </head>
     <body>
+        <button id="Rock"> Rock</button>
+        <button id="Paper"> Paper</button>
+        <button id="Scissor"> Scissor</button>
+        <div id="result"> Result </div>
         <script>
+            const btns = document.querySelectorAll("button");
+            btns.forEach(btn => btn.addEventListener("click", () => {
+                document.getElementById("result").textContent = (oneRound(nonCaseSens(btn.id),computerPlay()));
+            }));
             function computerPlay() { //returns random RPS
                 let rps = getRandomInt(1,4);
                 //console.log(rps);
@@ -68,14 +76,8 @@
                     return "Error! Pick Rock, Paper, or Scissors"
                 }
             }
-            function game() {
-                for (let i = 0; i < 5; i++)
-                {
-                    let playerSelection = prompt("Rock, paper, or scissors?");
-                    console.log(i + oneRound(nonCaseSens(playerSelection),computerPlay()));
-                }
-            }
-            game();
+                //let playerSelection = prompt("Rock, paper, or scissors?");
+                //console.log(oneRound(nonCaseSens(playerSelection),computerPlay()));
         </script>
     </body>
 </html>
